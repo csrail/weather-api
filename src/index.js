@@ -42,10 +42,22 @@
         }
     }
 
-    getWeatherInformation("Auckland, New Zealand").then((jsonData) => {
-        console.log(jsonData);
-        console.log(getLocationInformation(jsonData.location));
-        console.log(getCurrentInformation(jsonData.current));
+    const weatherInformation = getWeatherInformation("Auckland");
+
+    const locationInformation = weatherInformation.then((jsonData) =>
+        getLocationInformation(jsonData.location),
+    );
+
+    locationInformation.then((locationDataObject) => {
+        console.log(locationDataObject);
+    });
+
+    const currentInformation = weatherInformation.then((jsonData) =>
+        getCurrentInformation(jsonData.current),
+    );
+
+    currentInformation.then((currentDataObject) => {
+        console.log(currentDataObject);
     });
 
     return {};
