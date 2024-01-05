@@ -31,10 +31,15 @@
 
     async function getWeatherInformation(searchTerm) {
         const url = `https://api.weatherapi.com/v1/current.json?key=25108cb167ef437d86b204741240201&q=${searchTerm}`;
+        const urlBad = `https://api.weatherapi.com/v1/current.json?key=BadKey&q=${searchTerm}`;
 
-        const fetchResponse = await fetch(url, { mode: "cors" });
-        const responseBodyJSON = await fetchResponse.json();
-        return responseBodyJSON;
+        try {
+            const fetchResponse = await fetch(url, { mode: "cors" });
+            const responseBodyJSON = await fetchResponse.json();
+            return responseBodyJSON;
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     getWeatherInformation("Auckland, New Zealand").then((jsonData) => {
