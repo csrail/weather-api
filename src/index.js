@@ -188,71 +188,7 @@
     }
 
     currentInformation.then((currentDataObject) => {
-        const mainComponent = document.createElement("div");
-
-        const lastUpdatedComponent = document.createElement("div");
-        const lastUpdatedSubComponent = document.createElement("div");
-        const lastUpdatedDescriptorElement = document.createElement("div");
-        const lastUpdatedInformationElement = document.createElement("div");
-
-        lastUpdatedDescriptorElement.textContent = "Last Updated:";
-        lastUpdatedInformationElement.textContent =
-            currentDataObject.lastUpdated;
-        lastUpdatedSubComponent.append(
-            lastUpdatedDescriptorElement,
-            lastUpdatedInformationElement,
-        );
-
-        lastUpdatedComponent.append(lastUpdatedSubComponent);
-        mainComponent.append(lastUpdatedComponent);
-
-        const temperatureComponent = document.createElement("div");
-        const temperatureSubComponent = document.createElement("div");
-        const temperatureDescriptorElement = document.createElement("div");
-        const temperatureInformationElement = document.createElement("div");
-
-        temperatureDescriptorElement.textContent = "Temperature";
-        temperatureInformationElement.textContent = `${currentDataObject.temperature}\u00B0C`;
-        temperatureSubComponent.append(
-            temperatureDescriptorElement,
-            temperatureInformationElement,
-        );
-
-        temperatureComponent.append(temperatureSubComponent);
-        mainComponent.append(temperatureComponent);
-
-        const conditionTextComponent = document.createElement("div");
-        const conditionTextSubComponent = document.createElement("div");
-        const conditionTextDescriptorElement = document.createElement("div");
-        const conditionTextInformationElement = document.createElement("div");
-
-        conditionTextDescriptorElement.textContent = "Condition";
-        conditionTextInformationElement.textContent = `${currentDataObject.conditionText}`;
-        conditionTextSubComponent.append(
-            conditionTextDescriptorElement,
-            conditionTextInformationElement,
-        );
-
-        conditionTextComponent.append(conditionTextSubComponent);
-        mainComponent.append(conditionTextComponent);
-
-
-        const conditionIconComponent = document.createElement("div");
-        const conditionIconSubComponent = document.createElement("div");
-        const conditionIconDescriptorElement = document.createElement("div");
-        const conditionIconImageElement = document.createElement("img");
-
-        conditionIconDescriptorElement.textContent = "";
-        conditionIconImageElement.src = `${currentDataObject.conditionIcon}`;
-        conditionIconSubComponent.append(
-            conditionIconDescriptorElement,
-            conditionIconImageElement,
-        );
-
-        conditionIconComponent.append(conditionIconSubComponent);
-        mainComponent.append(conditionIconComponent);
-
-        document.body.append(mainComponent);
+        displayCurrentInformation(currentDataObject)
     });
 
     const formElement = document.createElement("form");
