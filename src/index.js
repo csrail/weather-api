@@ -183,5 +183,23 @@
         document.body.append(mainComponent);
     });
 
+    const formElement = document.createElement("form");
+    const inputSearchElement = document.createElement("input");
+    inputSearchElement.setAttribute("type", "text");
+
+    const inputSubmitElement = document.createElement("input");
+    inputSubmitElement.setAttribute("type", "submit")
+
+    formElement.addEventListener("submit", (e) => {
+       e.preventDefault()
+       getWeatherInformation(inputSearchElement.value).then((information) => {
+           console.log(information);
+       })
+    })
+
+    formElement.append(inputSearchElement, inputSubmitElement)
+    document.body.append(formElement)
+
+
     return {};
 })();
