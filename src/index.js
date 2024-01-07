@@ -49,6 +49,8 @@
     );
 
     locationInformation.then((locationDataObject) => {
+        const mainComponent = document.createElement("div");
+
         const cityComponent = document.createElement("div");
         const citySubComponent = document.createElement("div");
         const cityDescriptorElement = document.createElement("div");
@@ -59,7 +61,7 @@
         citySubComponent.append(cityDescriptorElement, cityInformationElement);
 
         cityComponent.append(citySubComponent);
-        document.body.append(cityComponent);
+        mainComponent.append(cityComponent);
 
         const countryComponent = document.createElement("div");
         const countrySubComponent = document.createElement("div");
@@ -74,7 +76,9 @@
         );
 
         countryComponent.append(countrySubComponent);
-        document.body.append(countryComponent);
+        mainComponent.append(countryComponent);
+
+        document.body.append(mainComponent);
     });
 
     const currentInformation = weatherInformation.then((jsonData) =>
