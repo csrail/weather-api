@@ -112,66 +112,7 @@
 }
 
     locationInformation.then((locationDataObject) => {
-        const mainComponent = document.createElement("div");
-
-        const cityComponent = document.createElement("div");
-        const citySubComponent = document.createElement("div");
-        const cityDescriptorElement = document.createElement("div");
-        const cityInformationElement = document.createElement("div");
-
-        cityDescriptorElement.textContent = "City";
-        cityInformationElement.textContent = locationDataObject.name;
-        citySubComponent.append(cityDescriptorElement, cityInformationElement);
-
-        cityComponent.append(citySubComponent);
-        mainComponent.append(cityComponent);
-
-        const countryComponent = document.createElement("div");
-        const countrySubComponent = document.createElement("div");
-        const countryDescriptorElement = document.createElement("div");
-        const countryInformationElement = document.createElement("div");
-
-        countryDescriptorElement.textContent = "Country";
-        countryInformationElement.textContent = locationDataObject.country;
-        countrySubComponent.append(
-            countryDescriptorElement,
-            countryInformationElement,
-        );
-
-        countryComponent.append(countrySubComponent);
-        mainComponent.append(countryComponent);
-
-        const timezoneComponent = document.createElement("div");
-        const timezoneSubComponent = document.createElement("div");
-        const timezoneDescriptorElement = document.createElement("div");
-        const timezoneInformationElement = document.createElement("div");
-
-        timezoneDescriptorElement.textContent = "Timezone";
-        timezoneInformationElement.textContent = locationDataObject.timezone;
-        timezoneSubComponent.append(
-            timezoneDescriptorElement,
-            timezoneInformationElement,
-        );
-
-        timezoneComponent.append(timezoneSubComponent);
-        mainComponent.append(timezoneComponent);
-
-        const localtimeComponent = document.createElement("div");
-        const localtimeSubComponent = document.createElement("div");
-        const localtimeDescriptorElement = document.createElement("div");
-        const localtimeInformationElement = document.createElement("div");
-
-        localtimeDescriptorElement.textContent = "Time";
-        localtimeInformationElement.textContent = locationDataObject.localtime;
-        localtimeSubComponent.append(
-            localtimeDescriptorElement,
-            localtimeInformationElement,
-        );
-
-        localtimeComponent.append(localtimeSubComponent);
-        mainComponent.append(localtimeComponent);
-
-        document.body.append(mainComponent);
+        displayLocationInformation(locationDataObject)
     });
 
     const currentInformation = weatherInformation.then((jsonData) =>
