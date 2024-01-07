@@ -116,7 +116,25 @@
     );
 
     currentInformation.then((currentDataObject) => {
-        console.log(currentDataObject);
+        const mainComponent = document.createElement("div");
+
+        const lastUpdatedComponent = document.createElement("div");
+        const lastUpdatedSubComponent = document.createElement("div");
+        const lastUpdatedDescriptorElement = document.createElement("div");
+        const lastUpdatedInformationElement = document.createElement("div");
+
+        lastUpdatedDescriptorElement.textContent = "Last Updated:";
+        lastUpdatedInformationElement.textContent =
+            currentDataObject.lastUpdated;
+        lastUpdatedSubComponent.append(
+            lastUpdatedDescriptorElement,
+            lastUpdatedInformationElement,
+        );
+
+        lastUpdatedComponent.append(lastUpdatedSubComponent);
+        mainComponent.append(lastUpdatedComponent);
+
+        document.body.append(mainComponent);
     });
 
     return {};
