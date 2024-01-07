@@ -134,6 +134,21 @@
         lastUpdatedComponent.append(lastUpdatedSubComponent);
         mainComponent.append(lastUpdatedComponent);
 
+        const temperatureComponent = document.createElement("div");
+        const temperatureSubComponent = document.createElement("div");
+        const temperatureDescriptorElement = document.createElement("div");
+        const temperatureInformationElement = document.createElement("div");
+
+        temperatureDescriptorElement.textContent = "Temperature";
+        temperatureInformationElement.textContent = `${currentDataObject.temperature}\u00B0C`;
+        temperatureSubComponent.append(
+            temperatureDescriptorElement,
+            temperatureInformationElement,
+        );
+
+        temperatureComponent.append(temperatureSubComponent);
+        mainComponent.append(temperatureComponent);
+
         document.body.append(mainComponent);
     });
 
