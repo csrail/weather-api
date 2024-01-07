@@ -49,19 +49,17 @@
     );
 
     locationInformation.then((locationDataObject) => {
-        const component = document.createElement("div");
-        Object.entries(locationDataObject).forEach((entry) => {
-            const subComponent = document.createElement("div");
-            const descriptorElement = document.createElement("div");
-            const informationElement = document.createElement("div");
+        const cityComponent = document.createElement("div");
+        const citySubComponent = document.createElement("div");
+        const cityDescriptorElement = document.createElement("div");
+        const cityInformationElement = document.createElement("div");
 
-            descriptorElement.textContent = entry[0];
-            informationElement.textContent = entry[1];
+        cityDescriptorElement.textContent = "City";
+        cityInformationElement.textContent = locationDataObject.name;
+        citySubComponent.append(cityDescriptorElement, cityInformationElement);
 
-            subComponent.append(descriptorElement, informationElement);
-            component.append(subComponent);
-        });
-        document.body.append(component);
+        cityComponent.append(citySubComponent);
+        document.body.append(cityComponent);
     });
 
     const currentInformation = weatherInformation.then((jsonData) =>
