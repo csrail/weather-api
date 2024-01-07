@@ -1,3 +1,6 @@
+import "./stylesheets/minimum.css"
+import "./stylesheets/style.css"
+
 (() => {
     const unsecureWeatherApiKey = "25108cb167ef437d86b204741240201";
     const fetchWeatherApi =
