@@ -3,7 +3,7 @@
     const fetchWeatherApi =
         "https://api.weatherapi.com/v1/current.json?key=25108cb167ef437d86b204741240201&q=Hamilton New Zealand&aqi=no";
 
-    function getLocationInformation(locationDataObject) {
+    function getLocationInfo(locationDataObject) {
         const obj = {};
 
         obj.name = locationDataObject.name;
@@ -14,7 +14,7 @@
         return obj;
     }
 
-    function getCurrentInformation(currentDataObject) {
+    function getCurrentInfo(currentDataObject) {
         const obj = {};
 
         obj.lastUpdated = currentDataObject.last_updated;
@@ -29,7 +29,7 @@
         return obj;
     }
 
-    async function getWeatherInformation(searchTerm) {
+    async function getWeatherInfo(searchTerm) {
         const url = `https://api.weatherapi.com/v1/current.json?key=25108cb167ef437d86b204741240201&q=${searchTerm}`;
         const urlBad = `https://api.weatherapi.com/v1/current.json?key=BadKey&q=${searchTerm}`;
 
@@ -42,23 +42,23 @@
         }
     }
 
-    const weatherInformation = getWeatherInformation("Auckland");
+    const weatherInfo = getWeatherInfo("Auckland");
 
-    const locationInformation = weatherInformation.then((jsonData) =>
-        getLocationInformation(jsonData.location),
+    const locationInfo = weatherInfo.then((jsonData) =>
+        getLocationInfo(jsonData.location),
     );
 
-    function displayLocationInformation(locationDataObject) {
+    function displayLocationInfo(locationDataObject) {
         const mainComponent = document.createElement("div");
 
         const cityComponent = document.createElement("div");
         const citySubComponent = document.createElement("div");
         const cityDescriptorElement = document.createElement("div");
-        const cityInformationElement = document.createElement("div");
+        const cityInfoElement = document.createElement("div");
 
         cityDescriptorElement.textContent = "City";
-        cityInformationElement.textContent = locationDataObject.name;
-        citySubComponent.append(cityDescriptorElement, cityInformationElement);
+        cityInfoElement.textContent = locationDataObject.name;
+        citySubComponent.append(cityDescriptorElement, cityInfoElement);
 
         cityComponent.append(citySubComponent);
         mainComponent.append(cityComponent);
@@ -66,13 +66,13 @@
         const countryComponent = document.createElement("div");
         const countrySubComponent = document.createElement("div");
         const countryDescriptorElement = document.createElement("div");
-        const countryInformationElement = document.createElement("div");
+        const countryInfoElement = document.createElement("div");
 
         countryDescriptorElement.textContent = "Country";
-        countryInformationElement.textContent = locationDataObject.country;
+        countryInfoElement.textContent = locationDataObject.country;
         countrySubComponent.append(
             countryDescriptorElement,
-            countryInformationElement,
+            countryInfoElement,
         );
 
         countryComponent.append(countrySubComponent);
@@ -81,13 +81,13 @@
         const timezoneComponent = document.createElement("div");
         const timezoneSubComponent = document.createElement("div");
         const timezoneDescriptorElement = document.createElement("div");
-        const timezoneInformationElement = document.createElement("div");
+        const timezoneInfoElement = document.createElement("div");
 
         timezoneDescriptorElement.textContent = "Timezone";
-        timezoneInformationElement.textContent = locationDataObject.timezone;
+        timezoneInfoElement.textContent = locationDataObject.timezone;
         timezoneSubComponent.append(
             timezoneDescriptorElement,
-            timezoneInformationElement,
+            timezoneInfoElement,
         );
 
         timezoneComponent.append(timezoneSubComponent);
@@ -96,13 +96,13 @@
         const localtimeComponent = document.createElement("div");
         const localtimeSubComponent = document.createElement("div");
         const localtimeDescriptorElement = document.createElement("div");
-        const localtimeInformationElement = document.createElement("div");
+        const localtimeInfoElement = document.createElement("div");
 
         localtimeDescriptorElement.textContent = "Time";
-        localtimeInformationElement.textContent = locationDataObject.localtime;
+        localtimeInfoElement.textContent = locationDataObject.localtime;
         localtimeSubComponent.append(
             localtimeDescriptorElement,
-            localtimeInformationElement,
+            localtimeInfoElement,
         );
 
         localtimeComponent.append(localtimeSubComponent);
@@ -111,28 +111,28 @@
         document.body.append(mainComponent);
 }
 
-    locationInformation.then((locationDataObject) => {
-        displayLocationInformation(locationDataObject)
+    locationInfo.then((locationDataObject) => {
+        displayLocationInfo(locationDataObject)
     });
 
-    const currentInformation = weatherInformation.then((jsonData) =>
-        getCurrentInformation(jsonData.current),
+    const currentInfo = weatherInfo.then((jsonData) =>
+        getCurrentInfo(jsonData.current),
     );
 
-    function displayCurrentInformation(currentDataObject) {
+    function displayCurrentInfo(currentDataObject) {
         const mainComponent = document.createElement("div");
 
         const lastUpdatedComponent = document.createElement("div");
         const lastUpdatedSubComponent = document.createElement("div");
         const lastUpdatedDescriptorElement = document.createElement("div");
-        const lastUpdatedInformationElement = document.createElement("div");
+        const lastUpdatedInfoElement = document.createElement("div");
 
         lastUpdatedDescriptorElement.textContent = "Last Updated:";
-        lastUpdatedInformationElement.textContent =
+        lastUpdatedInfoElement.textContent =
             currentDataObject.lastUpdated;
         lastUpdatedSubComponent.append(
             lastUpdatedDescriptorElement,
-            lastUpdatedInformationElement,
+            lastUpdatedInfoElement,
         );
 
         lastUpdatedComponent.append(lastUpdatedSubComponent);
@@ -141,13 +141,13 @@
         const temperatureComponent = document.createElement("div");
         const temperatureSubComponent = document.createElement("div");
         const temperatureDescriptorElement = document.createElement("div");
-        const temperatureInformationElement = document.createElement("div");
+        const temperatureInfoElement = document.createElement("div");
 
         temperatureDescriptorElement.textContent = "Temperature";
-        temperatureInformationElement.textContent = `${currentDataObject.temperature}\u00B0C`;
+        temperatureInfoElement.textContent = `${currentDataObject.temperature}\u00B0C`;
         temperatureSubComponent.append(
             temperatureDescriptorElement,
-            temperatureInformationElement,
+            temperatureInfoElement,
         );
 
         temperatureComponent.append(temperatureSubComponent);
@@ -156,13 +156,13 @@
         const conditionTextComponent = document.createElement("div");
         const conditionTextSubComponent = document.createElement("div");
         const conditionTextDescriptorElement = document.createElement("div");
-        const conditionTextInformationElement = document.createElement("div");
+        const conditionTextInfoElement = document.createElement("div");
 
         conditionTextDescriptorElement.textContent = "Condition";
-        conditionTextInformationElement.textContent = `${currentDataObject.conditionText}`;
+        conditionTextInfoElement.textContent = `${currentDataObject.conditionText}`;
         conditionTextSubComponent.append(
             conditionTextDescriptorElement,
-            conditionTextInformationElement,
+            conditionTextInfoElement,
         );
 
         conditionTextComponent.append(conditionTextSubComponent);
@@ -187,8 +187,8 @@
         document.body.append(mainComponent);
     }
 
-    currentInformation.then((currentDataObject) => {
-        displayCurrentInformation(currentDataObject)
+    currentInfo.then((currentDataObject) => {
+        displayCurrentInfo(currentDataObject)
     });
 
     const formElement = document.createElement("form");
@@ -200,9 +200,9 @@
 
     formElement.addEventListener("submit", (e) => {
        e.preventDefault()
-       getWeatherInformation(inputSearchElement.value).then((weatherInformationResponse) => {
-           displayLocationInformation(getLocationInformation(weatherInformationResponse.location));
-           displayCurrentInformation(getCurrentInformation(weatherInformationResponse.current))
+       getWeatherInfo(inputSearchElement.value).then((weatherInfoResponse) => {
+           displayLocationInfo(getLocationInfo(weatherInfoResponse.location));
+           displayCurrentInfo(getCurrentInfo(weatherInfoResponse.current))
        })
     })
 
