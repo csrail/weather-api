@@ -93,6 +93,21 @@
         timezoneComponent.append(timezoneSubComponent);
         mainComponent.append(timezoneComponent);
 
+        const localtimeComponent = document.createElement("div");
+        const localtimeSubComponent = document.createElement("div");
+        const localtimeDescriptorElement = document.createElement("div");
+        const localtimeInformationElement = document.createElement("div");
+
+        localtimeDescriptorElement.textContent = "Time";
+        localtimeInformationElement.textContent = locationDataObject.localtime;
+        localtimeSubComponent.append(
+            localtimeDescriptorElement,
+            localtimeInformationElement,
+        );
+
+        localtimeComponent.append(localtimeSubComponent);
+        mainComponent.append(localtimeComponent);
+
         document.body.append(mainComponent);
     });
 
