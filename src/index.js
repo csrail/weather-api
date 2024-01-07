@@ -149,6 +149,21 @@
         temperatureComponent.append(temperatureSubComponent);
         mainComponent.append(temperatureComponent);
 
+        const conditionTextComponent = document.createElement("div");
+        const conditionTextSubComponent = document.createElement("div");
+        const conditionTextDescriptorElement = document.createElement("div");
+        const conditionTextInformationElement = document.createElement("div");
+
+        conditionTextDescriptorElement.textContent = "Condition";
+        conditionTextInformationElement.textContent = `${currentDataObject.conditionText}`;
+        conditionTextSubComponent.append(
+            conditionTextDescriptorElement,
+            conditionTextInformationElement,
+        );
+
+        conditionTextComponent.append(conditionTextSubComponent);
+        mainComponent.append(conditionTextComponent);
+
         document.body.append(mainComponent);
     });
 
