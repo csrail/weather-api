@@ -164,6 +164,22 @@
         conditionTextComponent.append(conditionTextSubComponent);
         mainComponent.append(conditionTextComponent);
 
+
+        const conditionIconComponent = document.createElement("div");
+        const conditionIconSubComponent = document.createElement("div");
+        const conditionIconDescriptorElement = document.createElement("div");
+        const conditionIconImageElement = document.createElement("img");
+
+        conditionIconDescriptorElement.textContent = "";
+        conditionIconImageElement.src = `${currentDataObject.conditionIcon}`;
+        conditionIconSubComponent.append(
+            conditionIconDescriptorElement,
+            conditionIconImageElement,
+        );
+
+        conditionIconComponent.append(conditionIconSubComponent);
+        mainComponent.append(conditionIconComponent);
+
         document.body.append(mainComponent);
     });
 
