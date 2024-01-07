@@ -201,7 +201,7 @@
     formElement.addEventListener("submit", (e) => {
        e.preventDefault()
        getWeatherInformation(inputSearchElement.value).then((weatherInformationResponse) => {
-           displayLocationInformation(weatherInformationResponse.location);
+           displayLocationInformation(getLocationInformation(weatherInformationResponse.location));
            displayCurrentInformation(getCurrentInformation(weatherInformationResponse.current))
        })
     })
