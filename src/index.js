@@ -7,6 +7,10 @@
     locationInfoElement.setAttribute("data-location", "today");
     document.body.append(locationInfoElement)
 
+    const currentInfoElement = document.createElement("div");
+    currentInfoElement.setAttribute("data-current", "today");
+    document.body.append(currentInfoElement);
+
     function getLocationInfo(locationDataObject) {
         const obj = {};
 
@@ -188,7 +192,7 @@
         conditionIconComponent.append(conditionIconSubComponent);
         mainComponent.append(conditionIconComponent);
 
-        document.body.append(mainComponent);
+        document.querySelector("div[data-current='today']").replaceChildren(mainComponent)
     }
 
     currentInfo.then((currentDataObject) => {
