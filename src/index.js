@@ -78,6 +78,21 @@
         countryComponent.append(countrySubComponent);
         mainComponent.append(countryComponent);
 
+        const timezoneComponent = document.createElement("div");
+        const timezoneSubComponent = document.createElement("div");
+        const timezoneDescriptorElement = document.createElement("div");
+        const timezoneInformationElement = document.createElement("div");
+
+        timezoneDescriptorElement.textContent = "Timezone";
+        timezoneInformationElement.textContent = locationDataObject.timezone;
+        timezoneSubComponent.append(
+            timezoneDescriptorElement,
+            timezoneInformationElement,
+        );
+
+        timezoneComponent.append(timezoneSubComponent);
+        mainComponent.append(timezoneComponent);
+
         document.body.append(mainComponent);
     });
 
