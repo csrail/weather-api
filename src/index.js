@@ -60,6 +60,21 @@
 
         cityComponent.append(citySubComponent);
         document.body.append(cityComponent);
+
+        const countryComponent = document.createElement("div");
+        const countrySubComponent = document.createElement("div");
+        const countryDescriptorElement = document.createElement("div");
+        const countryInformationElement = document.createElement("div");
+
+        countryDescriptorElement.textContent = "Country";
+        countryInformationElement.textContent = locationDataObject.country;
+        countrySubComponent.append(
+            countryDescriptorElement,
+            countryInformationElement,
+        );
+
+        countryComponent.append(countrySubComponent);
+        document.body.append(countryComponent);
     });
 
     const currentInformation = weatherInformation.then((jsonData) =>
