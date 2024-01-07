@@ -3,6 +3,10 @@
     const fetchWeatherApi =
         "https://api.weatherapi.com/v1/current.json?key=25108cb167ef437d86b204741240201&q=Hamilton New Zealand&aqi=no";
 
+    const locationInfoElement = document.createElement("div");
+    locationInfoElement.setAttribute("data-location", "today");
+    document.body.append(locationInfoElement)
+
     function getLocationInfo(locationDataObject) {
         const obj = {};
 
@@ -49,7 +53,7 @@
     );
 
     function displayLocationInfo(locationDataObject) {
-        const mainComponent = document.createElement("div");
+        const mainComponent = document.createDocumentFragment()
 
         const cityComponent = document.createElement("div");
         const citySubComponent = document.createElement("div");
@@ -108,7 +112,7 @@
         localtimeComponent.append(localtimeSubComponent);
         mainComponent.append(localtimeComponent);
 
-        document.body.append(mainComponent);
+        document.querySelector("div[data-location='today']").replaceChildren(mainComponent);
 }
 
     locationInfo.then((locationDataObject) => {
