@@ -1,0 +1,36 @@
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+div[data-location='today'] {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3em;
+}
+
+div[data-location='today'] > div {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div[data-current='today'] {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3em;
+}
+
+div[data-current='today'] > div {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
