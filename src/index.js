@@ -1,18 +1,24 @@
-import "./stylesheets/minimum.css"
-import "./stylesheets/style.css"
+import "./stylesheets/minimum.css";
+import "./stylesheets/style.css";
 
 (() => {
     const unsecureWeatherApiKey = "25108cb167ef437d86b204741240201";
     const fetchWeatherApi =
         "https://api.weatherapi.com/v1/current.json?key=25108cb167ef437d86b204741240201&q=Hamilton New Zealand&aqi=no";
 
+    const weatherInfoElement = document.createElement("div");
+    weatherInfoElement.classList.add("weather-info");
+    document.body.append(weatherInfoElement);
+
     const locationInfoElement = document.createElement("div");
     locationInfoElement.setAttribute("data-location", "today");
-    document.body.append(locationInfoElement)
+    weatherInfoElement.append(locationInfoElement);
 
     const currentInfoElement = document.createElement("div");
     currentInfoElement.setAttribute("data-current", "today");
-    document.body.append(currentInfoElement);
+    weatherInfoElement.append(currentInfoElement);
+
+    document.body.append(weatherInfoElement);
 
     function getLocationInfo(locationDataObject) {
         const obj = {};
@@ -60,9 +66,9 @@ import "./stylesheets/style.css"
     );
 
     function displayLocationInfo(locationDataObject) {
-        const mainComponent = document.createDocumentFragment()
+        const mainComponent = document.createDocumentFragment();
 
-        const cityComponent = document.createElement("div");
+        const cityComponent = document.createDocumentFragment();
         const citySubComponent = document.createElement("div");
         const cityDescriptorElement = document.createElement("div");
         const cityInfoElement = document.createElement("div");
@@ -74,7 +80,7 @@ import "./stylesheets/style.css"
         cityComponent.append(citySubComponent);
         mainComponent.append(cityComponent);
 
-        const countryComponent = document.createElement("div");
+        const countryComponent = document.createDocumentFragment();
         const countrySubComponent = document.createElement("div");
         const countryDescriptorElement = document.createElement("div");
         const countryInfoElement = document.createElement("div");
@@ -89,7 +95,7 @@ import "./stylesheets/style.css"
         countryComponent.append(countrySubComponent);
         mainComponent.append(countryComponent);
 
-        const timezoneComponent = document.createElement("div");
+        const timezoneComponent = document.createDocumentFragment();
         const timezoneSubComponent = document.createElement("div");
         const timezoneDescriptorElement = document.createElement("div");
         const timezoneInfoElement = document.createElement("div");
@@ -104,7 +110,7 @@ import "./stylesheets/style.css"
         timezoneComponent.append(timezoneSubComponent);
         mainComponent.append(timezoneComponent);
 
-        const localtimeComponent = document.createElement("div");
+        const localtimeComponent = document.createDocumentFragment();
         const localtimeSubComponent = document.createElement("div");
         const localtimeDescriptorElement = document.createElement("div");
         const localtimeInfoElement = document.createElement("div");
@@ -119,11 +125,13 @@ import "./stylesheets/style.css"
         localtimeComponent.append(localtimeSubComponent);
         mainComponent.append(localtimeComponent);
 
-        document.querySelector("div[data-location='today']").replaceChildren(mainComponent);
-}
+        document
+            .querySelector("div[data-location='today']")
+            .replaceChildren(mainComponent);
+    }
 
     locationInfo.then((locationDataObject) => {
-        displayLocationInfo(locationDataObject)
+        displayLocationInfo(locationDataObject);
     });
 
     const currentInfo = weatherInfo.then((jsonData) =>
@@ -131,16 +139,15 @@ import "./stylesheets/style.css"
     );
 
     function displayCurrentInfo(currentDataObject) {
-        const mainComponent = document.createElement("div");
+        const mainComponent = document.createDocumentFragment();
 
-        const lastUpdatedComponent = document.createElement("div");
+        const lastUpdatedComponent = document.createDocumentFragment();
         const lastUpdatedSubComponent = document.createElement("div");
         const lastUpdatedDescriptorElement = document.createElement("div");
         const lastUpdatedInfoElement = document.createElement("div");
 
         lastUpdatedDescriptorElement.textContent = "Last Updated:";
-        lastUpdatedInfoElement.textContent =
-            currentDataObject.lastUpdated;
+        lastUpdatedInfoElement.textContent = currentDataObject.lastUpdated;
         lastUpdatedSubComponent.append(
             lastUpdatedDescriptorElement,
             lastUpdatedInfoElement,
@@ -149,7 +156,7 @@ import "./stylesheets/style.css"
         lastUpdatedComponent.append(lastUpdatedSubComponent);
         mainComponent.append(lastUpdatedComponent);
 
-        const temperatureComponent = document.createElement("div");
+        const temperatureComponent = document.createDocumentFragment();
         const temperatureSubComponent = document.createElement("div");
         const temperatureDescriptorElement = document.createElement("div");
         const temperatureInfoElement = document.createElement("div");
@@ -164,7 +171,7 @@ import "./stylesheets/style.css"
         temperatureComponent.append(temperatureSubComponent);
         mainComponent.append(temperatureComponent);
 
-        const conditionTextComponent = document.createElement("div");
+        const conditionTextComponent = document.createDocumentFragment();
         const conditionTextSubComponent = document.createElement("div");
         const conditionTextDescriptorElement = document.createElement("div");
         const conditionTextInfoElement = document.createElement("div");
@@ -179,8 +186,7 @@ import "./stylesheets/style.css"
         conditionTextComponent.append(conditionTextSubComponent);
         mainComponent.append(conditionTextComponent);
 
-
-        const conditionIconComponent = document.createElement("div");
+        const conditionIconComponent = document.createDocumentFragment();
         const conditionIconSubComponent = document.createElement("div");
         const conditionIconDescriptorElement = document.createElement("div");
         const conditionIconImageElement = document.createElement("img");
@@ -195,11 +201,13 @@ import "./stylesheets/style.css"
         conditionIconComponent.append(conditionIconSubComponent);
         mainComponent.append(conditionIconComponent);
 
-        document.querySelector("div[data-current='today']").replaceChildren(mainComponent)
+        document
+            .querySelector("div[data-current='today']")
+            .replaceChildren(mainComponent);
     }
 
     currentInfo.then((currentDataObject) => {
-        displayCurrentInfo(currentDataObject)
+        displayCurrentInfo(currentDataObject);
     });
 
     const formElement = document.createElement("form");
@@ -207,19 +215,18 @@ import "./stylesheets/style.css"
     inputSearchElement.setAttribute("type", "text");
 
     const inputSubmitElement = document.createElement("input");
-    inputSubmitElement.setAttribute("type", "submit")
+    inputSubmitElement.setAttribute("type", "submit");
 
     formElement.addEventListener("submit", (e) => {
-       e.preventDefault()
-       getWeatherInfo(inputSearchElement.value).then((weatherInfoResponse) => {
-           displayLocationInfo(getLocationInfo(weatherInfoResponse.location));
-           displayCurrentInfo(getCurrentInfo(weatherInfoResponse.current))
-       })
-    })
+        e.preventDefault();
+        getWeatherInfo(inputSearchElement.value).then((weatherInfoResponse) => {
+            displayLocationInfo(getLocationInfo(weatherInfoResponse.location));
+            displayCurrentInfo(getCurrentInfo(weatherInfoResponse.current));
+        });
+    });
 
-    formElement.append(inputSearchElement, inputSubmitElement)
-    document.body.append(formElement)
-
+    formElement.append(inputSearchElement, inputSubmitElement);
+    document.body.append(formElement);
 
     return {};
 })();
